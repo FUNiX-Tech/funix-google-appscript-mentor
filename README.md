@@ -135,5 +135,4 @@ Chạy function `applySummaryTrigger` ở `main.gs`.
 - `trigger.js`: các function trigger, không bao giờ chạy bằng tay.
 - `notUser.js`: các function không dùng đến.
 - `example.variable.js`: chưa biến của project. Cần tên thành `variable.js` và cập nhật lại biến khi triển khai.
-- `test.variable.js`: cấu trúc y hệt `example.variable.js`, chứa các biến để test. Xóa/comment code trong file khi triển khai.
 - `.claspignore`: chứa các tên file sẽ không được upload lên AppScript Cloud.
