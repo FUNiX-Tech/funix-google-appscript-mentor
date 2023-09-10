@@ -66,7 +66,9 @@ Vào https://script.google.com/home, chọn tên project bạn đã tạo ở tr
 
 ---
 
-> **_NOTE:_** khi chạy các function lần đầu sẽ được hỏi permission. Chấp nhật để chạy tiếp.
+> **_NOTE:_** khi chạy các function lần đầu sẽ được hỏi permission. Chấp nhận để chạy tiếp.
+
+---
 
 ## Thêm time-driven trigger cho project (chức năng chính)
 
@@ -86,24 +88,32 @@ Sau khi vào https://script.google.com/home, chọn dự án mới được tạ
 
 Vậy đã thêm trigger chạy theo thời gian thành công. Mỗi khoảng thời gian bạn đã setup ở trên, function `updateSummaryFile` sẽ được trigger.
 
+---
+
 ## Cập nhật lại file tổng hợp manually
 
 Bạn có thể cập nhật file tổng hợp bằng tay bất cứ lúc nào bằng cách:
 
 1. Click vào `< > Editor` ở sidebar.
-2. Chọn main.gs
+2. Chọn `main.gs`
 3. Chọn function cần chạy ở toolbar của editor (giữa `Debug` và `Execution log`) là `updateSummaryFile`
 4. Click `Run` ở toolbar.
+
+---
 
 ## Kiểm tra mentor spreadsheet có tên sheet không hợp lệ
 
 Nhiều mentor spreadsheet có tên `Trang tính1`. Có thể kiểm tra bằng cách chạy `findInvalidMentorSheetNames` tương tự như trên. Xem log để xem kết quả.
+
+---
 
 ## Sửa tên các sheet của các mentor spreadsheet có tên không hợp lệ
 
 Function `fixMentorSheetNames` có tác dụng duyệt qua tất cả mentor file, kiểm tra các sheet. Nếu sheet không hợp lệ, sẽ đặt lại theo dạng `T9.2023`, `T10.2023`,... với tháng bắt đầu từ tháng 9.
 
 Chạy function `fixMentorSheetNames` như cách trên để tiến hành sửa.
+
+---
 
 ## Update mentor row trong sheet tổng hợp bằng checkbox
 
