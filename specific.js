@@ -144,23 +144,36 @@ function _addCheckboxesToSummaryFile() {
         `Added a checkbox to summary spreadsheet: sheet ${sheet.getName()}, row ${i}`
       );
     }
+
+    _styleCheckboxAndStatusColumns(sheet);
   });
   Logger.log(`Added checkboxes to summary spreadsheet.`);
 }
 
-function _removeSummarySpreadsheetCheckboxes() {
+function _removeCheckboxAndStatusColumns() {
   Logger.log(`Removing checkboxes from summary spreadsheet.`);
   const sheets = SUMMARY_SPREADSHEET.getSheets();
-  sheets.forEach((sheet, index) => {
-    const row = SHEET_STRUCTURE.summary.dataRange.rowStartIndex;
-    const column = SHEET_STRUCTURE.summary.checkboxColumnIndex;
-    const rowNums = sheet.getLastRow() - row + 1;
-    const columnNums = 1;
+  sheets.forEach((sheet) => {
+    sheet
+      .getRange(
+        1,
+        SHEET_STRUCTURE.summary.checkboxColumnIndex,
+        sheet.getLastRow(),
+        1
+      )
+      .clear({ contentsOnly: true })
+      .clearDataValidations()
+      .setBorder(false, null, false, false, false, false);
 
     sheet
-      .getRange(row, column, rowNums, columnNums)
-      .clear()
-      .clearDataValidations();
+      .getRange(
+        1,
+        SHEET_STRUCTURE.summary.loadingColumnIndex,
+        sheet.getLastRow(),
+        1
+      )
+      .clear({ contentsOnly: true })
+      .setBorder(false, null, false, false, false, false);
 
     Logger.log(`Removed checkbox of summary file on sheet ${sheet.getName()}.`);
   });
@@ -201,4 +214,58 @@ function _checkboxChanged(row) {
 
 function _isValidSheetName(sheetName) {
   return /^t\d{1,2}\.20\d\d$/i.test(sheetName);
+}
+
+function _styleCheckboxAndStatusColumns(sheet) {
+  sheet
+    .getRange(
+      1,
+      SHEET_STRUCTURE.summary.checkboxColumnIndex,
+      sheet.getLastRow(),
+      1
+    )
+    .setBorder(
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      "#000000",
+      SpreadsheetApp.BorderStyle.SOLID
+    );
+
+  sheet
+    .getRange(
+      1,
+      SHEET_STRUCTURE.summary.loadingColumnIndex,
+      sheet.getLastRow(),
+      1
+    )
+    .setBorder(
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      "#000000",
+      SpreadsheetApp.BorderStyle.SOLID
+    );
+
+  sheet
+    .getRange(
+      SHEET_STRUCTURE.summary.headerRowIndex,
+      SHEET_STRUCTURE.summary.checkboxColumnIndex
+    )
+    .setValue("Cập nhật")
+    .setFontWeight("bold");
+
+  sheet
+    .getRange(
+      SHEET_STRUCTURE.summary.headerRowIndex,
+      SHEET_STRUCTURE.summary.loadingColumnIndex
+    )
+    .setValue("Trạng thái")
+    .setFontWeight("bold");
 }

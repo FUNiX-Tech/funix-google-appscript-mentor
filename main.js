@@ -41,7 +41,7 @@ function applySummaryTrigger() {
 function removeSummaryTrigger() {
   Logger.log(`Removing trigger from summary spreadsheet.`);
   removeSpreadsheetTrigger(SUMMARY_SPREADSHEET);
-  _removeSummarySpreadsheetCheckboxes();
+  _removeCheckboxAndStatusColumns();
   Logger.log(`Removed trigger from summary spreadsheet.`);
 }
 
