@@ -18,8 +18,9 @@ const SHEET_STRUCTURE = {
     mentorCodeColumnIndex: 2,
     totalReviewColumnIndex: 4,
     notOkReviewColumnIndex: 5,
-    loadingColumnIndex: 8,
+    loadingColumnIndex: 11,
     checkboxColumnIndex: 10,
+    headerRowIndex: 2,
     dataRange: {
       rowStartIndex: 4,
       columnStartIndex: 1,
